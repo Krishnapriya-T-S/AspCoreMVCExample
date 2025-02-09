@@ -1,0 +1,67 @@
+﻿@* @model AspCoreMVCExample.Models.Employee
+<h1>Profile View</h1>
+<form asp-action="Profile_Update_click" class="form-horizondal">
+    <div class="form-group">
+        <label class="control-label">Id</label>
+        @Html.TextBoxFor(Model=>Model.eid)
+    </div>
+    <div class="form-group">
+        <label class="control-label">Name</label>
+        @Html.TextBoxFor(Model => Model.ename)
+    </div>
+    <div class="form-group">
+        <label class="control-label">Address</label>
+        @Html.TextAreaFor(Model => Model.eaddr)
+    </div>
+    <div class="form-group">
+        <label class="control-label">Salary</label>
+        @Html.TextBoxFor(Model => Model.esal)
+    </div>
+    <div>
+        <input type="submit" value="Update" class="btn btn-primary" />
+    </div>
+</form>
+@{
+    if(TempData["msg1"]!=null){
+        <script>
+        alert('@TempData["msg1"]');
+        </script>
+    }
+}
+ *@
+@model IEnumerable<AspCoreMVCExample.Models.Employee>
+
+<h1>Employee Profiles</h1>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Salary</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.eid</td>
+                <td>@item.ename</td>
+                <td>@item.eaddr</td>
+                <td>@item.esal</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.eid" class="btn btn-primary">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@{
+    if (TempData["msg1"] != null)
+    {
+        <script>
+            alert('@TempData["msg1"]');
+        </script>
+    }
+}

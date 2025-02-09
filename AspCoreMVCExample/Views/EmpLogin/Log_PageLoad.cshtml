@@ -1,0 +1,27 @@
+﻿@model AspCoreMVCExample.Models.Employee
+<form asp-action="Log_click" class="form-horizondal" method="post">
+    <div class="form-group">
+        <label class="control-label">Employee Id</label>
+        <input asp-for="eid" class="form-control" id="t1" />
+    </div>
+    <div class="form-group">
+        <label class="control-label">Employee Name</label>
+        <input asp-for="ename" class="form-control" id="t2" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Login" class="btn btn-success" />
+    </div>
+
+</form>
+@{
+    if (@TempData["msg"] != null)
+    {
+        <script>
+
+            alert('@TempData["msg"]');
+            document.hetElementById("t1").value="";
+            document.hetElementById("t2").value="";
+            document.hetElementById("t3").value="";
+        </script>
+    }
+}

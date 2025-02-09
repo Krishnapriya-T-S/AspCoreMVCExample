@@ -1,0 +1,36 @@
+﻿@model IEnumerable<AspCoreMVCExample.Models.Employee>
+
+<h1>Employee Profiles</h1>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Salary</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var emp in Model)
+        {
+            <tr>
+                <td>@emp.eid</td>
+                <td>@emp.ename</td>
+                <td>@emp.eaddr</td>
+                <td>@emp.esal</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@emp.eid" class="btn btn-primary">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@{
+    if (TempData["msg1"] != null)
+    {
+        <script>
+            alert('@TempData["msg1"]');
+        </script>
+    }
+}
